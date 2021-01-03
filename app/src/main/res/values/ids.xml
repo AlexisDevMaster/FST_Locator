@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="caracteristiqueSalle" type="id"></item>
+    <item name="typeSalleTitre" type="id" />
+    <item name="typeTxtViewContainer" type="id" />
+    <item name="relativeTypeTextContainer" type="id" />
+    <item name="etageSalleTitre" type="id" />
+    <item name="lineSepCarac" type="id" />
+    <item name="equipementSalleTitre" type="id" />
+    <item name="equipementTxtViewContainer" type="id" />
+    <item name="relativeEquipementTextContainer" type="id" />
+    <item name="etageSalleContenu" type="id" />
+    <item name="lienDispoSalle" type="id" />
+    <item name="etatDispoSalle" type="id" />
+    <item name="etatDispoTitreSalle" type="id" />
+    <item name="android_card_view_complement" type="id" />
+    <item name="disponibiliteSalle" type="id" />
+    <item name="disponibiliteTitreSalle" type="id" />
+    <item name="lineSepDispo" type="id" />
+    <item name="etatDispoTitre" type="id" />
+    <item name="etatDispoLien" type="id" />
+</resources>

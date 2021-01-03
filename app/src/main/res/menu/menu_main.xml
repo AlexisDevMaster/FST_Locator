@@ -1,0 +1,28 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.theluckydev.myapplication.MainActivity">
+    <item
+        android:id="@+id/searchBar"
+        app:showAsAction="always"
+        app:actionViewClass="androidx.appcompat.widget.SearchView"
+        android:title="Search" />
+
+    <item
+        android:id="@+id/action_settings"
+        android:orderInCategory="100"
+        android:title="Paramètres"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_advanced_search"
+        android:orderInCategory="100"
+        android:title="Recherche avancée"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/clear_map"
+        android:orderInCategory="100"
+        android:title="Nettoyer carte"
+        app:showAsAction="never" />
+</menu>

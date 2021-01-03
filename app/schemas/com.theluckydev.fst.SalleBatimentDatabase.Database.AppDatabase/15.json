@@ -1,0 +1,988 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 15,
+    "identityHash": "4f3b220d32c20ffc0bcb907de4a5f384",
+    "entities": [
+      {
+        "tableName": "Salle",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`indice` INTEGER NOT NULL, `idSalle` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `codeSalle` TEXT, `latitude` TEXT, `longitude` TEXT, `nomSalle` TEXT, `capaciteSalle` INTEGER NOT NULL, `etageSalle` TEXT, `idType` INTEGER NOT NULL, `idBatimentSalle` INTEGER NOT NULL, FOREIGN KEY(`idBatimentSalle`) REFERENCES `Batiment`(`idBatiment`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "indice",
+            "columnName": "indice",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "idRoom",
+            "columnName": "idSalle",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "codeRoom",
+            "columnName": "codeSalle",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "latitude",
+            "columnName": "latitude",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "longitude",
+            "columnName": "longitude",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "nameRoom",
+            "columnName": "nomSalle",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "capacityRoom",
+            "columnName": "capaciteSalle",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "levelRoom",
+            "columnName": "etageSalle",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "typeRoom",
+            "columnName": "idType",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "idBuilding",
+            "columnName": "idBatimentSalle",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "idSalle"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_Salle_idSalle",
+            "unique": false,
+            "columnNames": [
+              "idSalle"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_Salle_idSalle` ON `${TABLE_NAME}` (`idSalle`)"
+          },
+          {
+            "name": "index_Salle_idBatimentSalle",
+            "unique": false,
+            "columnNames": [
+              "idBatimentSalle"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_Salle_idBatimentSalle` ON `${TABLE_NAME}` (`idBatimentSalle`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "Batiment",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "idBatimentSalle"
+            ],
+            "referencedColumns": [
+              "idBatiment"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "Batiment",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`indice` INTEGER NOT NULL, `idBatiment` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `codeBatiment` TEXT, `nomBatiment` TEXT, `nomBatimentComplet` TEXT, `latitude` TEXT, `longitude` TEXT)",
+        "fields": [
+          {
+            "fieldPath": "indice",
+            "columnName": "indice",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "idBuilding",
+            "columnName": "idBatiment",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "codeBuilding",
+            "columnName": "codeBatiment",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "nameBuilding",
+            "columnName": "nomBatiment",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "completeNameBuilding",
+            "columnName": "nomBatimentComplet",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "latitude",
+            "columnName": "latitude",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "longitude",
+            "columnName": "longitude",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "idBatiment"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_Batiment_idBatiment",
+            "unique": false,
+            "columnNames": [
+              "idBatiment"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_Batiment_idBatiment` ON `${TABLE_NAME}` (`idBatiment`)"
+          }
+        ],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "Equipement",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`indice` INTEGER NOT NULL, `idEquipement` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `nomEquipement` TEXT)",
+        "fields": [
+          {
+            "fieldPath": "indice",
+            "columnName": "indice",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "idEquipment",
+            "columnName": "idEquipement",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "nameEquipment",
+            "columnName": "nomEquipement",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "idEquipement"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_Equipement_idEquipement",
+            "unique": false,
+            "columnNames": [
+              "idEquipement"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_Equipement_idEquipement` ON `${TABLE_NAME}` (`idEquipement`)"
+          }
+        ],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "Logiciel",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`indice` INTEGER NOT NULL, `idLogiciel` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `nomLogiciel` TEXT, `versionLogiciel` TEXT, `icnoneLogiciel` TEXT)",
+        "fields": [
+          {
+            "fieldPath": "indice",
+            "columnName": "indice",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "idSoftware",
+            "columnName": "idLogiciel",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "nameSoftware",
+            "columnName": "nomLogiciel",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "versionSoftware",
+            "columnName": "versionLogiciel",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "iconeSoftware",
+            "columnName": "icnoneLogiciel",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "idLogiciel"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_Logiciel_idLogiciel",
+            "unique": false,
+            "columnNames": [
+              "idLogiciel"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_Logiciel_idLogiciel` ON `${TABLE_NAME}` (`idLogiciel`)"
+          }
+        ],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "SalleEquipement",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`idSalle` INTEGER NOT NULL, `idEquipement` INTEGER NOT NULL, PRIMARY KEY(`idSalle`, `idEquipement`), FOREIGN KEY(`idSalle`) REFERENCES `Salle`(`idSalle`) ON UPDATE NO ACTION ON DELETE CASCADE , FOREIGN KEY(`idEquipement`) REFERENCES `Equipement`(`idEquipement`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "idRoom",
+            "columnName": "idSalle",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "idEquipment",
+            "columnName": "idEquipement",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "idSalle",
+            "idEquipement"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [
+          {
+            "name": "index_SalleEquipement_idSalle",
+            "unique": false,
+            "columnNames": [
+              "idSalle"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_SalleEquipement_idSalle` ON `${TABLE_NAME}` (`idSalle`)"
+          },
+          {
+            "name": "index_SalleEquipement_idEquipement",
+            "unique": false,
+            "columnNames": [
+              "idEquipement"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_SalleEquipement_idEquipement` ON `${TABLE_NAME}` (`idEquipement`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "Salle",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "idSalle"
+            ],
+            "referencedColumns": [
+              "idSalle"
+            ]
+          },
+          {
+            "table": "Equipement",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "idEquipement"
+            ],
+            "referencedColumns": [
+              "idEquipement"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "SalleLogiciel",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`idSalle` INTEGER NOT NULL, `idLogiciel` INTEGER NOT NULL, PRIMARY KEY(`idSalle`, `idLogiciel`), FOREIGN KEY(`idSalle`) REFERENCES `Salle`(`idSalle`) ON UPDATE NO ACTION ON DELETE CASCADE , FOREIGN KEY(`idLogiciel`) REFERENCES `Logiciel`(`idLogiciel`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "idRoom",
+            "columnName": "idSalle",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "idSoftware",
+            "columnName": "idLogiciel",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "idSalle",
+            "idLogiciel"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [
+          {
+            "name": "index_SalleLogiciel_idLogiciel",
+            "unique": false,
+            "columnNames": [
+              "idLogiciel"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_SalleLogiciel_idLogiciel` ON `${TABLE_NAME}` (`idLogiciel`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "Salle",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "idSalle"
+            ],
+            "referencedColumns": [
+              "idSalle"
+            ]
+          },
+          {
+            "table": "Logiciel",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "idLogiciel"
+            ],
+            "referencedColumns": [
+              "idLogiciel"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "UpToDate",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`idUpdtoDate` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `date` TEXT)",
+        "fields": [
+          {
+            "fieldPath": "idUpdtoDate",
+            "columnName": "idUpdtoDate",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "date",
+            "columnName": "date",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "idUpdtoDate"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "SurfacePoint",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`idPoint` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `latitude` TEXT, `longitude` TEXT, `ordre` INTEGER NOT NULL, `idBatiment` INTEGER NOT NULL, FOREIGN KEY(`idBatiment`) REFERENCES `Batiment`(`idBatiment`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "idPoint",
+            "columnName": "idPoint",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "latitude",
+            "columnName": "latitude",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "longitude",
+            "columnName": "longitude",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "ordre",
+            "columnName": "ordre",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "idBatiment",
+            "columnName": "idBatiment",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "idPoint"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_SurfacePoint_idBatiment",
+            "unique": false,
+            "columnNames": [
+              "idBatiment"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_SurfacePoint_idBatiment` ON `${TABLE_NAME}` (`idBatiment`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "Batiment",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "idBatiment"
+            ],
+            "referencedColumns": [
+              "idBatiment"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "Type",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`indice` INTEGER NOT NULL, `idType` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `typeSalle` TEXT)",
+        "fields": [
+          {
+            "fieldPath": "indice",
+            "columnName": "indice",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "idType",
+            "columnName": "idType",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "typeSalle",
+            "columnName": "typeSalle",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "idType"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "TypeSalle",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`indice` INTEGER NOT NULL, `idTypeSalle` INTEGER NOT NULL, `idSalle` INTEGER NOT NULL, PRIMARY KEY(`idTypeSalle`, `idSalle`), FOREIGN KEY(`idSalle`) REFERENCES `Salle`(`idSalle`) ON UPDATE NO ACTION ON DELETE CASCADE , FOREIGN KEY(`idTypeSalle`) REFERENCES `Type`(`idType`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "indice",
+            "columnName": "indice",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "idTypeRoom",
+            "columnName": "idTypeSalle",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "idRoom",
+            "columnName": "idSalle",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "idTypeSalle",
+            "idSalle"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [
+          {
+            "name": "index_TypeSalle_idTypeSalle",
+            "unique": false,
+            "columnNames": [
+              "idTypeSalle"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_TypeSalle_idTypeSalle` ON `${TABLE_NAME}` (`idTypeSalle`)"
+          },
+          {
+            "name": "index_TypeSalle_idSalle",
+            "unique": false,
+            "columnNames": [
+              "idSalle"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_TypeSalle_idSalle` ON `${TABLE_NAME}` (`idSalle`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "Salle",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "idSalle"
+            ],
+            "referencedColumns": [
+              "idSalle"
+            ]
+          },
+          {
+            "table": "Type",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "idTypeSalle"
+            ],
+            "referencedColumns": [
+              "idType"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "AliasRecherche",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`indice` INTEGER NOT NULL, `idAliasRecherche` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `alias` TEXT, `idSalle` INTEGER NOT NULL, FOREIGN KEY(`idSalle`) REFERENCES `Salle`(`idSalle`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "indice",
+            "columnName": "indice",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "idAliasSearch",
+            "columnName": "idAliasRecherche",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "alias",
+            "columnName": "alias",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "idRoom",
+            "columnName": "idSalle",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "idAliasRecherche"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_AliasRecherche_idAliasRecherche",
+            "unique": false,
+            "columnNames": [
+              "idAliasRecherche"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_AliasRecherche_idAliasRecherche` ON `${TABLE_NAME}` (`idAliasRecherche`)"
+          },
+          {
+            "name": "index_AliasRecherche_idSalle",
+            "unique": false,
+            "columnNames": [
+              "idSalle"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_AliasRecherche_idSalle` ON `${TABLE_NAME}` (`idSalle`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "Salle",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "idSalle"
+            ],
+            "referencedColumns": [
+              "idSalle"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "EntreeSalle",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`indice` INTEGER NOT NULL, `idEntreeSalle` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `latitude` TEXT, `longitude` TEXT, `idSalle` INTEGER NOT NULL, FOREIGN KEY(`idSalle`) REFERENCES `Salle`(`idSalle`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "indice",
+            "columnName": "indice",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "idEntreeSalle",
+            "columnName": "idEntreeSalle",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "latitude",
+            "columnName": "latitude",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "longitude",
+            "columnName": "longitude",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "idSalle",
+            "columnName": "idSalle",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "idEntreeSalle"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_EntreeSalle_idEntreeSalle",
+            "unique": false,
+            "columnNames": [
+              "idEntreeSalle"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_EntreeSalle_idEntreeSalle` ON `${TABLE_NAME}` (`idEntreeSalle`)"
+          },
+          {
+            "name": "index_EntreeSalle_idSalle",
+            "unique": false,
+            "columnNames": [
+              "idSalle"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_EntreeSalle_idSalle` ON `${TABLE_NAME}` (`idSalle`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "Salle",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "idSalle"
+            ],
+            "referencedColumns": [
+              "idSalle"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "GraphNode",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`indice` INTEGER NOT NULL, `idNode` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `name` TEXT, `latitude` TEXT, `longitude` TEXT, `weight` TEXT, `idGraphNodeType` INTEGER NOT NULL, FOREIGN KEY(`idGraphNodeType`) REFERENCES `GraphNodeType`(`idGraphNodeType`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "indice",
+            "columnName": "indice",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "idNode",
+            "columnName": "idNode",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "latitude",
+            "columnName": "latitude",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "longitude",
+            "columnName": "longitude",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "weight",
+            "columnName": "weight",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "idGraphType",
+            "columnName": "idGraphNodeType",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "idNode"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_GraphNode_idNode",
+            "unique": false,
+            "columnNames": [
+              "idNode"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_GraphNode_idNode` ON `${TABLE_NAME}` (`idNode`)"
+          },
+          {
+            "name": "index_GraphNode_idGraphNodeType",
+            "unique": false,
+            "columnNames": [
+              "idGraphNodeType"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_GraphNode_idGraphNodeType` ON `${TABLE_NAME}` (`idGraphNodeType`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "GraphNodeType",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "idGraphNodeType"
+            ],
+            "referencedColumns": [
+              "idGraphNodeType"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "GraphNodeType",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`indice` INTEGER NOT NULL, `idGraphNodeType` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `graphNodeType` TEXT)",
+        "fields": [
+          {
+            "fieldPath": "indice",
+            "columnName": "indice",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "idGraphNodeType",
+            "columnName": "idGraphNodeType",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "graphNodeType",
+            "columnName": "graphNodeType",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "idGraphNodeType"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_GraphNodeType_idGraphNodeType",
+            "unique": false,
+            "columnNames": [
+              "idGraphNodeType"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_GraphNodeType_idGraphNodeType` ON `${TABLE_NAME}` (`idGraphNodeType`)"
+          }
+        ],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "GraphEdge",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`indice` INTEGER NOT NULL, `idEdge` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `idNode1` INTEGER NOT NULL, `idNode2` INTEGER NOT NULL, FOREIGN KEY(`idNode1`) REFERENCES `GraphNode`(`idNode`) ON UPDATE NO ACTION ON DELETE CASCADE , FOREIGN KEY(`idNode2`) REFERENCES `GraphNode`(`idNode`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "indice",
+            "columnName": "indice",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "idEdge",
+            "columnName": "idEdge",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "idNode1",
+            "columnName": "idNode1",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "idNode2",
+            "columnName": "idNode2",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "idEdge"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_GraphEdge_idEdge",
+            "unique": false,
+            "columnNames": [
+              "idEdge"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_GraphEdge_idEdge` ON `${TABLE_NAME}` (`idEdge`)"
+          },
+          {
+            "name": "index_GraphEdge_idNode1",
+            "unique": false,
+            "columnNames": [
+              "idNode1"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_GraphEdge_idNode1` ON `${TABLE_NAME}` (`idNode1`)"
+          },
+          {
+            "name": "index_GraphEdge_idNode2",
+            "unique": false,
+            "columnNames": [
+              "idNode2"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_GraphEdge_idNode2` ON `${TABLE_NAME}` (`idNode2`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "GraphNode",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "idNode1"
+            ],
+            "referencedColumns": [
+              "idNode"
+            ]
+          },
+          {
+            "table": "GraphNode",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "idNode2"
+            ],
+            "referencedColumns": [
+              "idNode"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "Toilette",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`indice` INTEGER NOT NULL, `idToilette` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `latitude` TEXT, `longitude` TEXT)",
+        "fields": [
+          {
+            "fieldPath": "indice",
+            "columnName": "indice",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "idToilette",
+            "columnName": "idToilette",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "latitude",
+            "columnName": "latitude",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "longitude",
+            "columnName": "longitude",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "idToilette"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '4f3b220d32c20ffc0bcb907de4a5f384')"
+    ]
+  }
+}

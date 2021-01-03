@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".RechercheAvanceeActivity">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/android_card_view_recherche"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/relativeSearch">
+
+            <GridLayout
+                android:id="@+id/gridview_advanced_research"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:alignmentMode="alignBounds"
+                android:columnCount="2"
+                android:useDefaultMargins="true">
+
+                <TextView
+                    android:id="@+id/titre_batiment_spinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Bâtiment"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp" />
+
+                <Spinner
+                    android:id="@+id/batiment_spinner"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:spinnerMode="dropdown"
+                    android:textAlignment="textEnd" />
+
+                <TextView
+                    android:id="@+id/titre_typesalle_spinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Type de salle"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp" />
+
+                <Spinner
+                    android:id="@+id/typesalle_spinner"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:spinnerMode="dropdown"
+                    android:textAlignment="textEnd" />
+
+                <TextView
+                    android:id="@+id/titre_systeme_spinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="OS"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp" />
+
+                <Spinner
+                    android:id="@+id/systeme_spinner"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:spinnerMode="dropdown"
+                    android:textAlignment="textEnd"
+                    />
+
+                <TextView
+                    android:id="@+id/titre_logiciel_spinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Logiciels"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp" />
+
+                <Spinner
+                    android:id="@+id/logiciels_spinner"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:spinnerMode="dropdown"
+                    android:textAlignment="textEnd"/>
+
+
+                <TextView
+                    android:id="@+id/titre_equipements_spinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Équipements"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp" />
+
+                <Spinner
+                    android:id="@+id/equipements_spinner"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:spinnerMode="dropdown"
+                    android:textAlignment="textEnd"
+                    />
+
+                <TextView
+                    android:id="@+id/titre_dispo_spinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Disponibilité"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp" />
+
+                <Spinner
+                    android:id="@+id/dispo_spinner"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:spinnerMode="dropdown"
+                    android:textAlignment="textEnd"
+                    />
+
+            </GridLayout>
+
+            <Button
+                android:id="@+id/advanced_research_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Rechercher"
+                android:layout_below="@+id/gridview_advanced_research"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_below="@id/advanced_research_button"
+                android:background="@android:color/black"/>
+
+
+            <ListView
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:id="@+id/salleList"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:divider="@android:color/transparent"
+                android:dividerHeight="25dp"
+                android:scrollbars="vertical"
+                android:layout_below="@id/advanced_research_button"
+                />
+        </RelativeLayout>
+
+
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>
